@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d766e" />
+    <title>MANA-SEHAT | Aapki Baat, Sehat Ka Saath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  </head>
+  <body>
+    <section class="login-screen" id="login-screen">
+      <div class="login-glow"></div>
+      <div class="login-brand">
+        <img class="logo-image large" src="mana-sehat-logo.png" alt="MANA-SEHAT logo" />
+        <strong>MANA<span>-SEHAT</span></strong>
+        <small>Aapki Baat, Sehat Ka Saath</small>
+      </div>
+      <div class="login-card">
+        <div class="login-icon">✦</div>
+        <label class="login-language" for="login-language-select">अ <select id="login-language-select" aria-label="Select language"><option value="en">English</option><option value="te">తెలుగు</option><option value="hi">हिंदी</option><option value="ta">தமிழ்</option></select></label>
+        <div class="login-role-switch" role="tablist" aria-label="Choose login type">
+          <button class="active" data-login-role="patient" role="tab">Patient login</button>
+          <button data-login-role="doctor" role="tab">Doctor login</button>
+          <button data-login-role="hospital_staff" role="tab">Hospital staff</button>
+        </div>
+        <p class="eyebrow" id="login-eyebrow" data-i18n="secureLogin">SECURE PATIENT LOGIN</p>
+        <h1 id="login-title" data-i18n="loginTitle">Your health, your way.</h1>
+        <p class="muted" id="login-description" data-i18n="loginDescription">Access your records, scan reports, and prepare for your next consultation.</p>
+        <div class="login-tabs"><button class="active" data-login-tab="abha">ABHA ID</button><button data-login-tab="aadhaar">Aadhaar number</button></div>
+        <label id="login-label" for="login-input" data-i18n="abhaLabel">Enter your 14-digit ABHA ID</label>
+        <div class="login-input"><span id="login-prefix">ABHA</span><input id="login-input" inputmode="numeric" maxlength="17" placeholder="12-3456-7890-1234" /><span class="verified-mark">✓</span></div>
+        <button class="primary-button login-button" id="login-button"><span data-i18n="continueSecurely">Continue securely</span> <span>→</span></button>
+        <div class="login-or"><span></span> or <span></span></div>
+        <button class="outline-button full-width" id="qr-login">▣ <span id="qr-login-label" data-i18n="loginQr">Login with ABHA QR</span></button>
+        <p class="consent-note">By continuing, you agree to share your health details with MANA-SEHAT for care. <u>Learn more</u></p>
+      </div>
+      <div class="login-footer"><span>🔒 Your data is encrypted</span><span>ABHA verified</span><span>FHIR ready</span></div>
+    </section>
+
+    <div class="app-shell app-hidden" id="app-shell">
+      <div class="brand-reveal" id="brand-reveal" aria-hidden="true">
+        <div class="reveal-brand">
+          <img class="logo-image large" src="mana-sehat-logo.png" alt="MANA-SEHAT logo" />
+          <strong>MANA<span>-SEHAT</span></strong>
+          <p>Aapki Baat, Sehat Ka Saath</p>
+        </div>
+      </div>
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <img class="logo-image" src="mana-sehat-logo.png" alt="MANA-SEHAT logo" />
+          <div><strong>MANA<span>-SEHAT</span></strong><small>Aapki Baat, Sehat Ka Saath</small></div>
+        </div>
+        <div class="workspace-label">PATIENT WORKSPACE</div>
+        <nav>
+          <button class="nav-item active" data-view="overview"><span>⌂</span> Overview</button>
+          <button class="nav-item" data-view="case-taking"><span>✦</span> AI Case-taking <b class="nav-badge">2</b></button>
+          <button class="nav-item" data-view="find-care"><span>⌖</span> Find care nearby</button>
+          <button class="nav-item" data-view="timeline"><span>◷</span> Patient timeline</button>
+          <button class="nav-item" data-view="appointments"><span>□</span> Appointments</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="safety-card"><span class="shield">✓</span><div><strong>Your data is safe</strong><small>Consent-based & encrypted</small></div></div>
+          <button class="nav-item"><span>⚙</span> Settings</button>
+          <button class="nav-item"><span>?</span> Help centre</button>
+          <div class="profile-mini"><div class="avatar">RS</div><div><strong>Riya Sharma</strong><small>Patient ID: MS-24891</small></div><span>⌄</span></div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="mobile-brand"><img class="logo-image" src="mana-sehat-logo.png" alt="MANA-SEHAT logo" /><strong>MANA-SEHAT</strong></div>
+          <div class="breadcrumbs">Patient portal <span>/</span> <strong id="breadcrumb">Overview</strong></div>
+          <div class="top-actions"><label class="language-select-wrap" for="language-select">अ <select id="language-select" aria-label="Select language"><option value="en">English</option><option value="te">తెలుగు</option><option value="hi">हिंदी</option><option value="ta">தமிழ்</option></select></label><button class="icon-button" aria-label="Notifications">♧<i></i></button><div class="avatar">RS</div></div>
+        </header>
+
+        <div class="content">
+          <section class="view active" id="overview">
+            <div class="welcome-row"><div><p class="eyebrow">WEDNESDAY, 16 SEPTEMBER 2026</p><h1 data-i18n="welcome">Good morning, Riya <span>✦</span></h1><p class="muted" data-i18n="welcomeHelp">Let’s make your next healthcare visit a little easier.</p></div><button class="primary-button" data-view-target="case-taking"><span>＋</span> <span data-i18n="newCase">Start new case</span></button></div>
+            <div class="notice"><div class="notice-icon">✦</div><div><strong data-i18n="caseSummaryReady">Your AI case summary is ready</strong><p data-i18n="followUpQuestions">You have 2 follow-up questions before your appointment with Dr. Mehta.</p></div><button class="text-button" data-view-target="case-taking" data-i18n="continue">Continue <span>→</span></button></div>
+            <div class="section-heading"><div><h2 data-i18n="healthGlance">Your health at a glance</h2><p class="muted" data-i18n="everything">Everything important, in one place.</p></div><button class="link-button" data-view-target="timeline" data-i18n="viewTimeline">View timeline →</button></div>
+            <div class="stats-grid">
+              <article class="stat-card coral"><div class="stat-icon">♡</div><span class="stat-label">CURRENT CONCERN</span><strong>Recurring headaches</strong><small>Started 12 days ago</small><div class="stat-line"></div><button data-view-target="case-taking">Continue case →</button></article>
+              <article class="stat-card teal"><div class="stat-icon">◷</div><span class="stat-label">NEXT APPOINTMENT</span><strong>Dr. Ananya Mehta</strong><small>Tomorrow · 10:30 AM</small><div class="stat-line"></div><button data-view-target="appointments">View appointment →</button></article>
+              <article class="stat-card purple"><div class="stat-icon">▣</div><span class="stat-label">HEALTH RECORDS</span><strong>8 documents</strong><small>Last added 2 days ago</small><div class="stat-line"></div><button data-view-target="records">Manage records →</button></article>
+            </div>
+            <div class="dashboard-grid">
+              <article class="panel checkin-panel"><div class="panel-heading"><div><h2 data-i18n="feelingToday">How are you feeling today?</h2><p class="muted" data-i18n="checkinHelp">A quick check-in helps us notice changes early.</p></div><span class="sparkle">✦</span></div><div class="mood-row"><button>😟<span data-i18n="notWell">Not well</span></button><button>😐<span data-i18n="okay">Okay</span></button><button class="selected">🙂<span data-i18n="good">Good</span></button><button>😄<span data-i18n="great">Great</span></button></div><div class="mood-footer"><span data-i18n="lastCheckin">Last check-in: 3 days ago</span><button class="primary-button small" data-i18n="saveCheckin">Save check-in</button></div></article>
+              <article class="panel timeline-preview"><div class="panel-heading"><div><h2 data-i18n="recentActivity">Recent activity</h2><p class="muted" data-i18n="careJourney">Your care journey so far.</p></div><button class="link-button" data-view-target="timeline" data-i18n="seeAll">See all</button></div><div class="activity"><span class="activity-dot green"></span><div><strong data-i18n="reportUploaded">Report uploaded</strong><p data-i18n="bloodCount">Complete blood count.pdf · 2 days ago</p></div></div><div class="activity"><span class="activity-dot purple"></span><div><strong data-i18n="caseCompleted">Case-taking completed</strong><p data-i18n="questionsAnswered">Follow-up questions answered · 4 days ago</p></div></div><div class="activity"><span class="activity-dot orange"></span><div><strong data-i18n="appointmentBooked">Appointment booked</strong><p data-i18n="doctorAppointment">Dr. Ananya Mehta · 7 days ago</p></div></div></article>
+            </div>
+            <div class="language-banner"><div class="language-globe">文</div><div><strong>Healthcare in your language</strong><p>Speak or type in Hindi, English, or 8 other Indian languages.</p></div><button class="outline-button">Change language</button></div>
+          </section>
+
+          <section class="view" id="case-taking">
+            <div class="page-title"><div><p class="eyebrow">AI-GUIDED INTERVIEW</p><h1>Tell us what’s going on</h1><p class="muted">I’ll ask a few simple questions to prepare a clear summary for your doctor.</p></div><div class="secure-pill">✓ Private & secure</div></div>
+            <div class="case-layout"><div class="case-main panel"><div class="progress-wrap"><div><span>Question <strong id="question-number">1</strong> of 5</span><span id="progress-label">Getting started</span></div><div class="progress"><i id="progress-bar"></i></div></div><div class="assistant-message"><div class="assistant-avatar">✦</div><div><span class="role">MANA-SEHAT AI · हिंदी / ENGLISH</span><h2 id="question-text">What brings you here today?</h2><p id="question-helper">You can type your answer or use the microphone. Take your time.</p></div></div><div id="answer-area" class="answer-area"><textarea id="answer-input" placeholder="For example: I’ve been having a headache since last week..." rows="4"></textarea><div class="input-actions"><button class="voice-button" id="voice-button"><span>♩</span> Speak your answer</button><span class="character-count">0 / 500</span></div></div><div class="case-footer"><button class="text-button" id="skip-question">Skip for now</button><button class="primary-button" id="next-question">Save & continue <span>→</span></button></div></div><aside class="case-side"><div class="side-card risk-card"><div class="side-card-title"><span>♧</span> Safety check</div><p>If you have severe chest pain, difficulty breathing, sudden weakness, or loss of consciousness, please call emergency services immediately.</p><button class="emergency-button">Emergency help</button></div><div class="side-card"><div class="side-card-title"><span>▣</span> Your case so far</div><div class="case-item completed"><span>✓</span><div><strong>Main concern</strong><small>Recurring headaches</small></div></div><div class="case-item"><span>2</span><div><strong>Symptoms & pattern</strong><small>Up next</small></div></div><div class="case-item"><span>3</span><div><strong>Medical history</strong><small>Not started</small></div></div><div class="case-item"><span>4</span><div><strong>Lifestyle & triggers</strong><small>Not started</small></div></div></div></aside></div>
+          </section>
+
+          <section class="view" id="find-care">
+            <div class="page-title"><div><p class="eyebrow">NEARBY CARE</p><h1>Find a specialist or facility</h1><p class="muted">Explore synthetic demo hospitals, doctors, medical services, and labs near you.</p></div><span class="secure-pill">Demo directory</span></div>
+            <div class="filter-row"><div class="tabs"><button class="active" type="button" data-care-filter="all">All</button><button type="button" data-care-filter="hospital">Hospitals</button><button type="button" data-care-filter="doctor">Doctors</button><button type="button" data-care-filter="lab">Medical & labs</button><button type="button" data-care-filter="medicine">Medicines</button></div></div>
+            <div class="care-map panel" id="care-map" aria-label="Registered hospitals map"></div>
+            <p class="muted care-map-status" id="care-map-status">Loading registered hospital locations…</p>
+            <div class="records-list panel" id="care-directory"><div class="empty-records"><strong>Loading nearby care…</strong><span>We are checking the available demo directory.</span></div></div>
+          </section>
+
+          <section class="view" id="records">
+            <div class="page-title"><div><p class="eyebrow">YOUR DOCUMENTS</p><h1>Health records</h1><p class="muted">Keep your prescriptions, reports, and health documents together.</p></div><button class="primary-button" id="upload-trigger">＋ Upload document</button></div>
+            <div class="upload-zone" id="upload-zone"><div class="upload-icon">↑</div><h3>Drop a report here, or browse</h3><p>PDF, JPG, or PNG · Up to 10 MB per file</p><button class="outline-button">Choose a file</button><input type="file" id="file-input" hidden accept=".pdf,.jpg,.jpeg,.png" /></div>
+            <div class="filter-row"><div class="tabs"><button class="active">All records <b id="record-count">0</b></button></div><span class="muted">Records added from Scan appear here</span><button class="sort-button">Newest first⌄</button></div>
+            <div class="records-list panel" id="records-list"><div class="empty-records"><strong>No scanned records yet</strong><span>Use Scan to analyze a prescription, report, or X-ray.</span></div></div>
+          </section>
+
+          <section class="view" id="timeline">
+            <div class="page-title"><div><p class="eyebrow">YOUR CARE JOURNEY</p><h1>Patient timeline</h1><p class="muted">A complete, organized view of your health history.</p></div><button class="outline-button">↓ Export summary</button></div>
+            <div class="sample-summary panel"><div class="sample-summary-heading"><div><span class="eyebrow">PROTOTYPE AI SUMMARY</span><h2>Sample patient case · Riya Sharma</h2><p class="muted">Example of how MANA-SEHAT organizes important points for a clinician.</p></div><span class="tag purple-tag">Demo data</span></div><div class="summary-meta"><span>Updated 16 Sep 2026</span><span>Consultation · General medicine</span></div><div class="summary-grid"><div><strong>Symptoms & history</strong><p>Recurring headaches for 12 days, mostly in the evening. Sleep and hydration patterns recorded during case-taking.</p></div><div><strong>AI-noted points</strong><ul><li>Moderate frequency reported</li><li>No emergency red flags reported</li><li>Follow-up questions prepared for doctor review</li></ul></div><div><strong>Latest result</strong><p>Blood pressure: 118/76 mmHg · Pulse: 72 bpm</p><span class="result-status">Ready for clinician review</span></div></div></div><div class="saved-history panel" id="saved-history" hidden><div class="section-heading compact"><div><h2>Recently saved from scanner</h2><p class="muted">Your uploaded documents and X-ray context.</p></div></div><div id="history-items"></div></div>
+            <div class="timeline-card panel"><div class="timeline-filter"><button class="active">All activity</button><button>Consultations</button><button>Reports</button><button>Medications</button></div><div class="timeline-entry"><div class="date"><strong>16</strong><span>SEP 2026</span></div><div class="timeline-marker teal-marker"></div><div class="timeline-content"><span class="event-type teal-text">UPCOMING APPOINTMENT</span><h3>Consultation with Dr. Ananya Mehta</h3><p>General medicine · CityCare Hospital · 10:30 AM tomorrow</p><button class="link-button">View details →</button></div></div><div class="timeline-entry"><div class="date"><strong>14</strong><span>SEP 2026</span></div><div class="timeline-marker green-marker"></div><div class="timeline-content"><span class="event-type green-text">DOCUMENT UPLOADED</span><h3>Complete blood count</h3><p>Uploaded a new lab report. AI extracted 6 key values for review.</p><button class="link-button">Open report →</button></div></div><div class="timeline-entry"><div class="date"><strong>12</strong><span>SEP 2026</span></div><div class="timeline-marker purple-marker"></div><div class="timeline-content"><span class="event-type purple-text">CASE-TAKING COMPLETED</span><h3>Recurring headaches</h3><p>AI-guided interview completed. Summary shared with Dr. Mehta.</p><div class="highlight-chips"><span>Moderate frequency</span><span>No red flags detected</span></div></div></div><div class="timeline-entry"><div class="date"><strong>05</strong><span>SEP 2026</span></div><div class="timeline-marker orange-marker"></div><div class="timeline-content"><span class="event-type orange-text">MEDICATION ADDED</span><h3>Paracetamol 500 mg</h3><p>As needed · Prescribed by Dr. Ananya Mehta</p></div></div></div>
+          </section>
+
+          <section class="view" id="appointments">
+            <div class="page-title"><div><p class="eyebrow">CARE CONNECTED</p><h1>Appointments</h1><p class="muted">Prepare ahead and spend more time on what matters.</p></div><button class="primary-button">＋ Book appointment</button></div>
+            <div class="appointment-feature panel"><div class="appointment-date"><span>UPCOMING</span><strong>17</strong><small>SEP 2026</small></div><div class="appointment-details"><span class="event-type teal-text">GENERAL MEDICINE · VIDEO CONSULTATION</span><h2>Dr. Ananya Mehta</h2><p>CityCare Hospital · Tomorrow at 10:30 AM</p><div class="appointment-actions"><button class="primary-button small">Join waiting room</button><button class="outline-button small">Reschedule</button></div></div><div class="doctor-avatar">AM</div></div>
+            <div class="section-heading compact"><div><h2>Past appointments</h2><p class="muted">Your consultation history.</p></div></div><div class="past-appointments panel"><div><span class="appointment-status">COMPLETED</span><strong>Dr. Ananya Mehta</strong><span>12 Sep 2026 · General medicine</span></div><button class="link-button">View summary →</button></div><div class="past-appointments panel"><div><span class="appointment-status">COMPLETED</span><strong>Dr. Vikram Rao</strong><span>04 Aug 2026 · Dermatology</span></div><button class="link-button">View summary →</button></div>
+          </section>
+
+          <section class="view" id="scan">
+            <div class="page-title"><div><p class="eyebrow">SMART DOCUMENT SCANNER</p><h1 data-i18n="scanTitle">Scan & understand</h1><p data-i18n="scanDescription" class="muted">Scan prescriptions and reports. For X-rays, add context so your doctor can understand the image better.</p></div></div>
+            <div class="scan-choice-grid"><button class="scan-choice active" data-scan-type="prescription"><span>▤</span><strong>Prescription / report</strong><small>Extract medicines and important points</small></button><button class="scan-choice" data-scan-type="xray"><span>◉</span><strong>X-ray / medical image</strong><small>Upload and add context for your doctor</small></button></div>
+            <div class="scanner-card panel"><div class="scanner-frame"><div class="scan-corner tl"></div><div class="scan-corner tr"></div><div class="scan-corner bl"></div><div class="scan-corner br"></div><div class="scan-placeholder"><span id="scanner-symbol">▤</span><strong id="scanner-prompt">Place a prescription or report here</strong><small id="scanner-subtitle">Keep the page flat and well lit</small></div><div class="scan-line"></div></div><div class="scan-actions"><button class="primary-button scan-button" id="scan-button"><span>⌾</span> Use camera</button><button class="outline-button" id="gallery-button">▧ Open gallery</button></div><input type="file" id="scan-input" hidden accept="image/jpeg,image/png,application/pdf" capture="environment" /></div>
+            <div class="scan-result panel" id="scan-result" hidden><div class="result-heading"><div class="result-check">✓</div><div><span class="eyebrow">ANALYSIS COMPLETE</span><h2 id="result-title">Prescription summary</h2><p id="result-file" class="muted"></p></div><button class="close-result" id="close-result">×</button></div><div class="result-grid"><div><div class="result-label-row"><span>IMPORTANT POINTS</span><button type="button" class="speak-inline" id="speak-summary" aria-label="Read summary points aloud" title="Read summary aloud">🔊</button></div><ul id="important-points"><li>Medicine and dosage detected</li><li>Prescription date identified</li><li>Follow-up instructions found</li></ul></div><div class="result-chat"><strong>Ask about this document</strong><p>Get a simple explanation in your selected language.</p><button class="outline-button" id="explain-result">✦ Explain with MANA-SEHAT AI</button><button class="voice-result-button" id="speak-result">🎙 Speak summary</button></div></div><div class="result-footer"><button class="primary-button small" id="save-result">Save to health history</button><span id="saved-result" class="saved-label"></span></div></div>
+            <div class="xray-questions panel" id="xray-questions" hidden><div class="eyebrow">HELP US ORGANIZE THIS IMAGE</div><h2>Tell us about this X-ray</h2><p class="muted">We do not diagnose X-rays. These details help your doctor review the image in context.</p><div class="question-grid"><label>What body part is this? <input id="xray-body-part" placeholder="e.g. chest, knee, wrist" /></label><label>When was it taken? <input id="xray-date" type="date" /></label><label>Why was it taken? <textarea id="xray-reason" rows="2" placeholder="e.g. after a fall or during a check-up"></textarea></label><label>Anything your doctor should know? <textarea id="xray-notes" rows="2" placeholder="Add symptoms or instructions"></textarea></label></div><div class="xray-actions"><button class="primary-button" id="save-xray">Save X-ray to history</button><button class="outline-button" id="share-xray">↗ Share with doctor</button></div></div>
+            <div class="scan-tips"><div><span>✦</span><strong>AI text extraction</strong><small>Reads medicines, dates, and instructions</small></div><div><span>⌁</span><strong>Speak in your language</strong><small>Chat and voice explanations follow your language</small></div><div><span>✓</span><strong>Private history</strong><small>Saved documents stay in your care timeline</small></div></div>
+          </section>
+
+          <section class="view" id="profile">
+            <div class="page-title"><div><p class="eyebrow">YOUR ACCOUNT</p><h1>Profile & ABHA</h1><p class="muted">Manage your identity, consent, and preferences.</p></div><button class="outline-button">Edit profile</button></div>
+            <div class="profile-hero panel"><div class="profile-avatar">RS<span class="online-dot"></span></div><div><h2>Riya Sharma</h2><p>Female · 28 years · New Delhi</p><span class="profile-id">Patient ID: MS-24891</span></div><span class="verified-badge">✓ Verified</span></div>
+            <div class="abha-card"><div class="abha-top"><span>ABHA DIGITAL HEALTH ID</span><span class="abha-logo">ABHA</span></div><div class="abha-number">12-3456-7890-1234</div><div class="abha-name">RIYA SHARMA</div><div class="abha-bottom"><span>Health ID linked</span><span>▣</span></div></div>
+            <div class="profile-menu panel"><button><span class="menu-icon teal-bg">▣</span><div><strong>Personal information</strong><small>Age, gender, address, emergency contact</small></div><b>›</b></button><button><span class="menu-icon purple-bg">♧</span><div><strong>Consent & privacy</strong><small>Control who can access your records</small></div><b>›</b></button><button><span class="menu-icon orange-bg">文</span><div><strong>Language preferences</strong><small>English · हिंदी · +8 languages</small></div><b>›</b></button><button><span class="menu-icon green-bg">?</span><div><strong>Help & support</strong><small>FAQs and contact support</small></div><b>›</b></button></div>
+            <button class="logout-button" id="logout-button">↪ Log out securely</button>
+          </section>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-view="overview"><span class="nav-icon home-icon">⌂</span><b data-i18n="home">Home</b></button><button data-view="timeline"><span class="nav-icon history-icon">◷</span><b data-i18n="history">History</b></button><button class="scan-nav" data-view="scan"><span class="scan-symbol"><i></i><em></em></span><b data-i18n="scan">Scan</b></button><button data-view="find-care"><span class="nav-icon records-icon">⌖</span><b>Find care</b></button><button data-view="profile"><span class="nav-icon profile-icon">●</span><b data-i18n="profile">Profile</b></button></nav>
+      </main>
+    </div>
+    <button class="chatbot-fab" id="chatbot-fab" aria-label="Open MANA-SEHAT assistant"><span class="chatbot-spark">✦</span><span class="chatbot-face">●</span><i></i></button>
+    <section class="chatbot-panel" id="chatbot-panel" aria-label="MANA-SEHAT assistant" aria-hidden="true">
+      <header class="chatbot-header"><div class="chatbot-title"><div class="mini-bot">✦</div><div><strong>MANA-SEHAT AI</strong><small>Here to make healthcare easier</small></div></div><button id="chatbot-close" aria-label="Close assistant">×</button></header>
+      <div class="chatbot-messages" id="chatbot-messages"><div class="chat-message bot" id="chatbot-welcome">Hello! I can help you log in, choose ABHA or Aadhaar, and use the MANA-SEHAT app.</div><div class="quick-replies" id="chatbot-quick-replies"><button>How do I log in?</button><button>What is ABHA?</button><button>Get help</button></div></div>
+      <form class="chatbot-form" id="chatbot-form"><input id="chatbot-input" placeholder="Ask MANA-SEHAT anything..." autocomplete="off" /><button type="button" class="chatbot-mic" id="chatbot-mic" aria-label="Speak to MANA-SEHAT">🎙</button><button type="submit" aria-label="Send message">↑</button><div class="chatbot-voice-status" id="chatbot-voice-status" role="status" aria-live="polite"></div></form>
+    </section>
+    <div class="app-loading" id="app-loading" hidden aria-live="polite" aria-busy="true"><div class="loading-card"><img class="logo-image large" src="mana-sehat-logo.png" alt="MANA-SEHAT" /><strong>MANA<span>-SEHAT</span></strong><p data-i18n="loading">Please wait while we prepare your secure experience…</p><label class="loading-language" for="loading-language-select">अ <select id="loading-language-select" aria-label="Select language while loading"><option value="en">English</option><option value="te">తెలుగు</option><option value="hi">हिंदी</option><option value="ta">தமிழ்</option></select></label><span class="loading-spinner"></span></div></div>
+    <div class="toast" id="toast">Saved successfully</div>
+    <script src="translations.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="app.js"></script>
+  </body>
+</html>

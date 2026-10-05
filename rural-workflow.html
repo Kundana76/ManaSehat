@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MANA-SEHAT 2.0 | Rural care demo</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="rural-workflow.css"></head>
+<body class="rural-page">
+  <header class="rural-header"><div class="brand"><img class="logo-image" src="mana-sehat-logo.png" alt=""><div><strong>MANA<span>-SEHAT</span></strong><small>Hospital workspace</small></div></div><a href="index.html">↪ Log out</a></header>
+  <main class="rural-main">
+    <div class="demo-banner"><strong>DEMO MODE</strong> Synthetic records only. Do not use for real clinical decisions.</div>
+    <section class="rural-hero"><div><p class="eyebrow">MANA-SEHAT 2.0</p><h1>Hospital care, coordinated.</h1><p class="muted">Track patient records, referrals, queues, diagnostics, medicines, and follow-ups from one hospital workspace.</p></div><label>Workspace role<select id="role"><option value="hospital_staff">Hospital staff</option></select></label></section>
+    <div id="error" class="rural-error" role="alert" hidden></div>
+    <section class="summary-grid" id="summary"></section>
+    <nav class="rural-tabs"><button class="active" data-tab="facilities">Nearby facilities</button><button data-tab="patients">Patient records</button><button data-tab="appointments">Appointments & queue</button><button data-tab="referrals">Referral tracking</button><button data-tab="follow-ups">Follow-ups</button><button data-tab="availability">Labs & medicines</button></nav>
+    <section class="rural-panel" id="content"><p>Loading demo workspace…</p></section>
+  </main>
+  <script src="rural-workflow.js"></script>
+</body>
+</html>

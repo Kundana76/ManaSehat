@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123f46" />
+    <title>MANA-SEHAT | Clinical Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="mana-sehat-clinical-command-center-2026.css" />
+  </head>
+  <body>
+    <div class="ms26-shell">
+      <aside class="ms26-sidebar">
+        <a class="ms26-brand" href="#" aria-label="MANA-SEHAT home">
+          <img src="mana-sehat-logo.png" alt="" />
+          <span><b>MANA<span>-SEHAT</span></b><small>Clinical command center</small></span>
+        </a>
+        <div class="ms26-workspace-label">WORKSPACE</div>
+        <nav class="ms26-nav" aria-label="Clinical navigation">
+          <button class="is-active" data-section="overview"><i>⌂</i>Overview</button>
+          <button data-section="patients"><i>♙</i>Patients <em>24</em></button>
+          <button data-section="appointments"><i>◷</i>Appointments</button>
+          <button data-section="records"><i>▣</i>Case summaries</button>
+          <button data-section="referrals"><i>↗</i>Refer patient</button>
+          <button data-section="analytics"><i>◒</i>Analytics</button>
+        </nav>
+        <div class="ms26-sidebar-bottom">
+          <div class="ms26-security-card"><strong>FHIR workspace</strong><span><i></i> All systems operational</span></div>
+          <button class="ms26-sidebar-link"><i>⚙</i> Workspace settings</button>
+          <button class="ms26-sidebar-link"><i>?</i> Help center</button>
+          <div class="ms26-user"><div class="ms26-avatar">AM</div><span><b>Dr. Ananya Mehta</b><small>Clinical lead</small></span><button aria-label="Profile menu">⌄</button></div>
+          <a class="ms26-sidebar-link" href="index.html">↪ Log out securely</a>
+        </div>
+      </aside>
+
+      <main class="ms26-main">
+        <header class="ms26-topbar">
+          <button class="ms26-menu" aria-label="Open navigation">☰</button>
+          <div class="ms26-breadcrumb">MANA-SEHAT <span>/</span> <b>Clinical workspace</b></div>
+          <div class="ms26-top-actions">
+            <label class="ms26-search"><span>⌕</span><input id="ms26-global-search" type="search" placeholder="Search patient or ABHA ID" /></label>
+            <button class="ms26-icon-button" aria-label="Notifications">♧<b></b></button>
+            <div class="ms26-avatar ms26-avatar-small">AM</div>
+          </div>
+        </header>
+
+        <div class="ms26-content">
+          <section class="ms26-section is-visible" data-panel="overview">
+            <div class="ms26-hero">
+              <div><p class="ms26-eyebrow">WEDNESDAY, 16 SEPTEMBER 2026 · 09:42 AM</p><h1>Good morning, Dr. Mehta <span>✦</span></h1><p>Here is the care picture for your team today.</p><button class="ms26-primary ms26-hero-action" data-section-target="referrals">↗ Refer a patient to another hospital</button></div>
+              <div class="ms26-view-switch" role="tablist" aria-label="Choose dashboard view">
+                <button class="is-selected" data-mode="doctor" role="tab">Doctor view</button>
+                <button data-mode="hospital" role="tab">Hospital view</button>
+              </div>
+            </div>
+
+            <div class="ms26-alert"><span>✦</span><div><b>6 AI case summaries are ready for review</b><small>Prioritised using symptoms, vitals, and appointment urgency.</small></div><button data-section-target="records">Review queue <strong>→</strong></button></div>
+
+            <div class="ms26-stat-grid">
+              <article class="ms26-stat-card"><div class="ms26-stat-icon ms26-blue">♙</div><span>ACTIVE PATIENTS</span><strong data-doctor="42" data-hospital="486">42</strong><small><b class="ms26-positive">↑ 8%</b> vs last week</small></article>
+              <article class="ms26-stat-card"><div class="ms26-stat-icon ms26-coral">◷</div><span>APPOINTMENTS TODAY</span><strong data-doctor="18" data-hospital="124">18</strong><small><b>4</b> waiting for check-in</small></article>
+              <article class="ms26-stat-card"><div class="ms26-stat-icon ms26-violet">▣</div><span>SUMMARIES TO REVIEW</span><strong data-doctor="6" data-hospital="19">6</strong><small><b class="ms26-warning">2 urgent</b> · average 4 min</small></article>
+              <article class="ms26-stat-card"><div class="ms26-stat-icon ms26-green">♡</div><span>CARE FOLLOW-UPS</span><strong data-doctor="91%" data-hospital="87%">91%</strong><small><b class="ms26-positive">↑ 3%</b> completion rate</small></article>
+            </div>
+
+            <div class="ms26-dashboard-grid">
+              <article class="ms26-panel ms26-queue-panel">
+                <div class="ms26-panel-heading"><div><p class="ms26-eyebrow">NEXT UP</p><h2>Today’s care queue</h2></div><button class="ms26-text-button" data-section-target="appointments">View schedule →</button></div>
+                <div class="ms26-queue-list">
+                  <div class="ms26-queue-row"><div class="ms26-time">10:30<small>AM</small></div><div class="ms26-patient-avatar ms26-pink">RS</div><div class="ms26-patient-info"><b>Riya Sharma <span class="ms26-tag ms26-tag-teal">AI summary ready</span></b><small>Recurring headaches · Follow-up</small></div><button class="ms26-row-action" data-action="Open Riya Sharma's chart">Open chart</button></div>
+                  <div class="ms26-queue-row"><div class="ms26-time">11:15<small>AM</small></div><div class="ms26-patient-avatar ms26-sand">VK</div><div class="ms26-patient-info"><b>Vikram Kumar <span class="ms26-tag ms26-tag-coral">New patient</span></b><small>Chest discomfort · Consultation</small></div><button class="ms26-row-action" data-action="Open Vikram Kumar's chart">Open chart</button></div>
+                  <div class="ms26-queue-row"><div class="ms26-time">12:00<small>PM</small></div><div class="ms26-patient-avatar ms26-lilac">PM</div><div class="ms26-patient-info"><b>Priya Menon <span class="ms26-tag ms26-tag-muted">Records updated</span></b><small>Type 2 diabetes · Care review</small></div><button class="ms26-row-action" data-action="Open Priya Menon's chart">Open chart</button></div>
+                </div>
+              </article>
+              <article class="ms26-panel ms26-chart-panel">
+                <div class="ms26-panel-heading"><div><p class="ms26-eyebrow">CARE ACTIVITY</p><h2>Patient touchpoints</h2></div><select aria-label="Activity range"><option>Last 7 days</option><option>Last 30 days</option></select></div>
+                <div class="ms26-chart-summary"><strong>128</strong><span><b>↑ 14%</b> <small>from previous period</small></span></div>
+                <div class="ms26-bars" aria-label="Patient touchpoints over seven days">
+                  <i style="--h:45%"><b>Mon</b></i><i style="--h:61%"><b>Tue</b></i><i style="--h:53%"><b>Wed</b></i><i style="--h:82%"><b>Thu</b></i><i style="--h:70%"><b>Fri</b></i><i style="--h:93%"><b>Sat</b></i><i class="is-today" style="--h:76%"><b>Sun</b></i>
+                </div>
+              </article>
+            </div>
+
+            <div class="ms26-lower-grid">
+              <article class="ms26-panel ms26-insights">
+                <div class="ms26-panel-heading"><div><p class="ms26-eyebrow">AI-ASSISTED INSIGHTS</p><h2>What needs your attention</h2></div><span class="ms26-ai-mark">✦</span></div>
+                <div class="ms26-insight-row"><span class="ms26-insight-icon ms26-insight-red">!</span><div><b>2 patients report worsening symptoms</b><small>Riya Sharma and 1 more · flagged from case-taking</small></div><button data-section-target="records">Review</button></div>
+                <div class="ms26-insight-row"><span class="ms26-insight-icon ms26-insight-blue">✓</span><div><b>8 follow-ups are due this week</b><small>3 patients have not opened their care plan</small></div><button data-section-target="patients">View list</button></div>
+              </article>
+              <article class="ms26-panel ms26-capacity">
+                <div class="ms26-panel-heading"><div><p class="ms26-eyebrow">HOSPITAL VIEW</p><h2>Unit capacity</h2></div><button class="ms26-text-button" data-mode-target="hospital">See details →</button></div>
+                <div class="ms26-capacity-row"><span><i class="ms26-dot ms26-dot-green"></i>General medicine</span><b>72%</b><div><i style="width:72%"></i></div></div>
+                <div class="ms26-capacity-row"><span><i class="ms26-dot ms26-dot-yellow"></i>Emergency</span><b>88%</b><div><i style="width:88%"></i></div></div>
+                <div class="ms26-capacity-row"><span><i class="ms26-dot ms26-dot-blue"></i>Diagnostics</span><b>54%</b><div><i style="width:54%"></i></div></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="ms26-section" data-panel="patients">
+            <div class="ms26-page-title"><div><p class="ms26-eyebrow">PATIENT DIRECTORY</p><h1>Patients</h1><p>Find a patient and continue their care journey.</p></div><button class="ms26-primary" data-action="Register patient">＋ Register patient</button></div>
+            <div class="ms26-panel ms26-table-panel"><div class="ms26-table-toolbar"><div class="ms26-filter-tabs"><button class="is-active" data-filter="all">All patients <b>42</b></button><button data-filter="follow-up">Follow-up <b>8</b></button><button data-filter="new">New today <b>4</b></button></div><label class="ms26-table-search">⌕ <input id="ms26-patient-search" type="search" placeholder="Search by name or ID" /></label></div>
+              <div class="ms26-table-scroll"><table><thead><tr><th>Patient</th><th>Patient ID</th><th>Latest concern</th><th>Last activity</th><th>Status</th><th></th></tr></thead><tbody id="ms26-patient-table"><tr data-category="follow-up"><td><div class="ms26-table-person"><div class="ms26-patient-avatar ms26-pink">RS</div><b>Riya Sharma<small>Female · 28 years</small></b></div></td><td>MS-24891</td><td>Recurring headaches</td><td>Today, 08:12 AM</td><td><span class="ms26-status ms26-status-teal">Summary ready</span></td><td><button class="ms26-more" data-action="Open Riya Sharma's chart">•••</button></td></tr><tr data-category="new"><td><div class="ms26-table-person"><div class="ms26-patient-avatar ms26-sand">VK</div><b>Vikram Kumar<small>Male · 46 years</small></b></div></td><td>MS-24312</td><td>Chest discomfort</td><td>Today, 08:06 AM</td><td><span class="ms26-status ms26-status-coral">New patient</span></td><td><button class="ms26-more" data-action="Open Vikram Kumar's chart">•••</button></td></tr><tr data-category="follow-up"><td><div class="ms26-table-person"><div class="ms26-patient-avatar ms26-lilac">PM</div><b>Priya Menon<small>Female · 59 years</small></b></div></td><td>MS-21760</td><td>Type 2 diabetes</td><td>Yesterday, 04:40 PM</td><td><span class="ms26-status ms26-status-muted">Follow-up due</span></td><td><button class="ms26-more" data-action="Open Priya Menon's chart">•••</button></td></tr></tbody></table></div>
+            </div>
+          </section>
+
+          <section class="ms26-section" data-panel="appointments">
+            <div class="ms26-page-title"><div><p class="ms26-eyebrow">SCHEDULE</p><h1>Appointments</h1><p>Keep every consultation moving smoothly.</p></div><button class="ms26-primary" data-action="Book appointment">＋ Book appointment</button></div>
+            <div class="ms26-appointment-layout"><article class="ms26-panel ms26-calendar"><div class="ms26-calendar-head"><button aria-label="Previous day">‹</button><div><b>Wednesday</b><strong>16 September 2026</strong></div><button aria-label="Next day">›</button></div><div class="ms26-week"><span>MON<b>14</b></span><span>TUE<b>15</b></span><span class="is-today">WED<b>16</b></span><span>THU<b>17</b></span><span>FRI<b>18</b></span></div></article><article class="ms26-panel ms26-day-list"><div class="ms26-panel-heading"><div><p class="ms26-eyebrow">TODAY</p><h2>18 appointments</h2></div><span class="ms26-pill">4 waiting</span></div><div class="ms26-schedule-row"><time>10:30<br /><small>AM</small></time><div><b>Riya Sharma</b><small>Follow-up · Room 204</small></div><span class="ms26-status ms26-status-teal">Confirmed</span></div><div class="ms26-schedule-row"><time>11:15<br /><small>AM</small></time><div><b>Vikram Kumar</b><small>Consultation · Room 204</small></div><span class="ms26-status ms26-status-coral">Checked in</span></div><div class="ms26-schedule-row"><time>12:00<br /><small>PM</small></time><div><b>Priya Menon</b><small>Care review · Room 204</small></div><span class="ms26-status ms26-status-muted">Upcoming</span></div></article></div>
+          </section>
+
+          <section class="ms26-section" data-panel="records">
+            <div class="ms26-page-title"><div><p class="ms26-eyebrow">CLINICAL REVIEW QUEUE</p><h1>Case summaries</h1><p>AI-organised patient stories, ready for your clinical judgement.</p></div><span class="ms26-secure-pill">🔒 Consent-aware</span></div>
+            <div class="ms26-review-grid"><article class="ms26-review-card ms26-review-urgent"><div class="ms26-review-top"><span class="ms26-status ms26-status-coral">Urgent review</span><time>8 min ago</time></div><h2>Riya Sharma</h2><p>Recurring headaches · 12 days</p><div class="ms26-review-summary"><b>AI summary</b><span>4 symptoms · 2 possible triggers · no red flags detected</span></div><button class="ms26-primary ms26-full" data-action="Review Riya Sharma's summary">Review summary →</button></article><article class="ms26-review-card"><div class="ms26-review-top"><span class="ms26-status ms26-status-teal">Ready</span><time>24 min ago</time></div><h2>Vikram Kumar</h2><p>Chest discomfort · New patient</p><div class="ms26-review-summary"><b>AI summary</b><span>6 symptoms · medication history attached · vitals pending</span></div><button class="ms26-outline ms26-full" data-action="Review Vikram Kumar's summary">Review summary →</button></article><article class="ms26-review-card"><div class="ms26-review-top"><span class="ms26-status ms26-status-teal">Ready</span><time>1 hr ago</time></div><h2>Priya Menon</h2><p>Type 2 diabetes · Care review</p><div class="ms26-review-summary"><b>AI summary</b><span>3 observations · glucose log attached · care plan updated</span></div><button class="ms26-outline ms26-full" data-action="Review Priya Menon's summary">Review summary →</button></article></div>
+          </section>
+
+          <section class="ms26-section" data-panel="referrals">
+            <div class="ms26-page-title"><div><p class="ms26-eyebrow">CARE COORDINATION</p><h1>Refer a patient</h1><p>Create a synthetic referral to another hospital for specialist review or investigations.</p></div><span class="ms26-secure-pill">Demo workflow</span></div>
+            <form class="ms26-panel" id="doctor-referral-form">
+              <div class="ms26-form-grid">
+                <label>Patient<select name="patientId" required><option value="PAT-1001">Lakshmi Devi · PAT-1001</option><option value="PAT-1002">Ravi Kumar · PAT-1002</option></select></label>
+                <label>Receiving hospital<select name="toFacilityId" required><option value="FAC-002">CHC Miryalaguda</option><option value="FAC-001">PHC Nalgonda Rural</option></select></label>
+                <label>Priority<select name="urgency"><option value="routine">Routine</option><option value="urgent">Urgent</option></select></label>
+                <label>Referral reason<textarea name="reason" rows="3" required placeholder="Describe the clinical reason and requested review"></textarea></label>
+              </div>
+              <button class="ms26-primary" type="submit">Create referral →</button>
+              <p id="doctor-referral-status" class="ms26-form-status" role="status"></p>
+            </form>
+          </section>
+
+          <section class="ms26-section" data-panel="analytics">
+            <div class="ms26-page-title"><div><p class="ms26-eyebrow">PERFORMANCE</p><h1>Analytics</h1><p>Understand how digital case-taking improves care delivery.</p></div><select class="ms26-period-select"><option>This month</option><option>Last month</option></select></div>
+            <div class="ms26-stat-grid ms26-analytics-stats"><article class="ms26-stat-card"><span>CASE SUMMARIES COMPLETED</span><strong>184</strong><small><b class="ms26-positive">↑ 22%</b> vs previous month</small></article><article class="ms26-stat-card"><span>AVG. REVIEW TIME</span><strong>4m 12s</strong><small><b class="ms26-positive">↓ 18%</b> faster this month</small></article><article class="ms26-stat-card"><span>PATIENT COMPLETION</span><strong>86%</strong><small><b class="ms26-positive">↑ 6%</b> completion rate</small></article></div>
+            <article class="ms26-panel ms26-analytics-chart"><div class="ms26-panel-heading"><div><p class="ms26-eyebrow">CASE-TAKING VOLUME</p><h2>More complete stories, earlier</h2></div><span class="ms26-legend"><i></i>Summaries completed</span></div><div class="ms26-large-bars"><i style="--h:42%"><b>W1</b></i><i style="--h:58%"><b>W2</b></i><i style="--h:55%"><b>W3</b></i><i style="--h:76%"><b>W4</b></i><i class="is-today" style="--h:88%"><b>W5</b></i></div></article>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div class="ms26-toast" id="ms26-toast" role="status" aria-live="polite"></div>
+    <script src="mana-sehat-clinical-command-center-2026.js"></script>
+  </body>
+</html>
